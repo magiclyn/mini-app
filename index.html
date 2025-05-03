@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Mini App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+  </style>
+</head>
+<body>
+  <h1>欢迎来到我的 Mini App 👋</h1>
+  <p id="user"></p>
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand(); // 可展开窗口
+
+    // 获取用户信息
+    const initDataUnsafe = tg.initDataUnsafe;
+    document.getElementById('user').innerText =
+      `你好 ${initDataUnsafe.user?.first_name || '用户'}！`;
+
+    // 可选：发送数据到你的后端
+    // fetch('/save-user', { method: 'POST', body: JSON.stringify(initDataUnsafe) });
+  </script>
+</body>
+</html>
