@@ -1,27 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Mini App</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Mini App</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; }
+    /* 基础样式 */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #0088cc;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .content div {
+      flex: 1 1 calc(33.33% - 20px);
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    /* Mobile-first styles */
+    .content div img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    /* 使用媒体查询来适配不同屏幕尺寸 */
+    @media (max-width: 768px) {
+      .content div {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content div {
+        flex: 1 1 100%;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+    }
+
+    /* Telegram Mini App 风格 */
+    .telegram-app {
+      background-color: #0088cc;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .telegram-app h2 {
+      margin: 0;
+      font-size: 1.5em;
+    }
+
+    .telegram-app p {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+
+    .telegram-app a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      background-color: #4CAF50;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .telegram-app a:hover {
+      background-color: #45a049;
+    }
   </style>
 </head>
 <body>
-  <h1>欢迎来到我的 Mini App 👋</h1>
-  <p id="user"></p>
-  <script>
-    const tg = window.Telegram.WebApp;
-    tg.ready();
-    tg.expand(); // 可展开窗口
+  <header>
+    <h1>Welcome to My Telegram Mini App</h1>
+  </header>
 
-    // 获取用户信息
-    const initDataUnsafe = tg.initDataUnsafe;
-    document.getElementById('user').innerText =
-      `你好 ${initDataUnsafe.user?.first_name || '用户'}！`;
+  <main>
+    <div class="content">
+      <div class="telegram-app">
+        <h2>Telegram Mini App</h2>
+        <p>This is a simple example of a Telegram Mini App. This app is designed to be responsive and work well on both mobile and desktop devices.</p>
+        <a href="https://t.me/yourbot" target="_blank">Open in Telegram</a>
+      </div>
 
-    // 可选：发送数据到你的后端
-    // fetch('/save-user', { method: 'POST', body: JSON.stringify(initDataUnsafe) });
-  </script>
+      <div class="telegram-app">
+        <h2>Section 2</h2>
+        <p>This section could contain some more information or interact with the Telegram API.</p>
+        <a href="https://t.me/yourbot" target="_blank">Open in Telegram</a>
+      </div>
+
+      <div class="telegram-app">
+        <h2>Section 3</h2>
+        <p>This is another example of a section inside the Telegram Mini App layout.</p>
+        <a href="https://t.me/yourbot" target="_blank">Open in Telegram</a>
+      </div>
+    </div>
+  </main>
+
 </body>
 </html>
